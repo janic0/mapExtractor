@@ -1,7 +1,8 @@
 {
 	"name": "mapextractor",
-	"version": "1.0.0",
+	"version": "1.0.3",
 	"main": "index.js",
+	"bin": "index.js",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "^17.0.23",
