@@ -12,16 +12,15 @@ readline
 	})
 	.question("Type a URL: ", (url) => {
 		const fileName = url.split("/").pop();
-		if (!fileName) {
-			console.log("Invalid URL");
-			return;
-		}
+		if (!fileName) return console.log("Invalid URL");
 		axios.default.get(url).then((r) => {
 			if (
 				!Array.isArray(r.data.sources) ||
 				!Array.isArray(r.data.sourcesContent)
-			)
-				return console.error("Invalid response");
+			) {
+				console.error("Invalid response");
+				process.exit();
+			}
 			let completed = 0;
 			r.data.sources.forEach((source, i) =>
 				fs.mkdir(
